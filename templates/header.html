@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+<header>
+	<nav class="navbar navbar-dark bg-dark box-shadow">
+	{% if user.is_authenticated %}
+	  <div class="navbar navbar-header">
+		  <a class="navbar navbar-brand" href="#">医生排班管理 - {{ user.username }} 分院 </a>
+	      <a class="navbar nav-right" href="{% url 'account:user_logout' %}">管理其他分院点这里切换</a>
+	  </div>
+	{% else %}
+	  <div class="navbar navbar-header">
+		  <a class="navbar navbar-brand" href="#">医生排班</a>
+	      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'account:user_login' %}">Sign in</a>
+	  </div>
+	{% endif %}
+	</nav>
+</header>
+
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+
+    <div class="alert alert-secondary" role="alert">
+      你已经退出登录了！<a class="alert-link" href="{% url 'schedule:index' %}">点这里返回首页。</a>
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+

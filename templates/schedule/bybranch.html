@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+        
+        <div class="alert alert-primary" role="alert">
+          {{ branchRow.b_name }} 分院
+        </div>
+
+        {% if arrangeList %}
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">姓名</th>
+              <th scope="col">周一</th>
+              <th scope="col">周二</th>
+              <th scope="col">周三</th>
+              <th scope="col">周四</th>
+              <th scope="col">周五</th>
+              <th scope="col">周六</th>
+              <th scope="col">周日</th>
+              <th scope="col">操作</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% for arr in arrangeList %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{arr.doctor.name}}</td>
+              <td>{{arr.mon}}</td>
+              <td>{{arr.tue}}</td>
+              <td>{{arr.wed}}</td>
+              <td>{{arr.thu}}</td>
+              <td>{{arr.fri}}</td>
+              <td>{{arr.sat}}</td>
+              <td>{{arr.sun}}</td>
+              <td>
+                {% if user.username == branchRow.b_name or user.is_superuser %}
+                <a class="btn btn-primary" href="{% url 'schedule:arrange_update' arr.id %}" role="button">修改</a>
+                {% else %}
+                <p>*</p>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          
+        </table>
+        {% endif %}    
+{% endblock %}
+
+
+
+
+
+
+        
+
+
